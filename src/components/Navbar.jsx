@@ -10,7 +10,7 @@ export default function Navbar() {
     <header className="bg-color-oscuro text-color-claro shadow-md sticky top-0 z-50">
       <nav className="max-w-6xl mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-4">
         <Link to="/" className="text-2xl font-serif font-bold tracking-wide text-color-claro flex items-center gap-2">
-          <span>📚</span>
+          <span aria-hidden="true">📚</span>
           <span>Ateneo Libros</span>
         </Link>
 

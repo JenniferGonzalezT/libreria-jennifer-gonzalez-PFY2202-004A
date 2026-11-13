@@ -2,7 +2,7 @@ import { Link } from 'react-router';
 
 export default function MensajeError({ mensaje, onReintentar }) {
   return (
-    <div className="max-w-xl mx-auto my-12 p-6 bg-white border-l-4 border-color-primario rounded-r-xl shadow-md text-center">
+    <div role="alert" className="max-w-xl mx-auto my-12 p-6 bg-white border-l-4 border-color-primario rounded-r-xl shadow-md text-center">
       <h3 className="text-xl font-bold text-color-primario mb-2">
         Ocurrió un inconveniente al cargar los datos
       </h3>
