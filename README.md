@@ -64,6 +64,7 @@ libreria-jennifer-gonzalez-PFY2202-004A/
 ├── README.md
 ├── tailwind.config.js
 └── vite.config.js
+```
 
 
 # ⚙️ Instrucciones de Instalación y Ejecución
