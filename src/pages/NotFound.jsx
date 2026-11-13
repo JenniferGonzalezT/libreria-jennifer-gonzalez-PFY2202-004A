@@ -2,7 +2,7 @@ import { Link } from 'react-router';
 
 export default function NotFound() {
   return (
-    <section className="max-w-xl mx-auto px-4 py-20 text-center">
+    <section className="page-container text-center">
       <p className="text-6xl font-serif font-bold text-color-primario mb-4">404</p>
       <h1 className="text-2xl font-bold text-color-oscuro mb-3">
         Página no encontrada

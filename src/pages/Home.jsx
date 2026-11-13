@@ -18,7 +18,7 @@ export default function Home() {
   };
 
   return (
-    <section className="max-w-6xl mx-auto px-4 py-10">
+    <section className="page-container">
       <div className="bg-color-primario text-color-claro rounded-2xl p-8 sm:p-12 mb-10 shadow-lg">
         <h1 className="text-3xl sm:text-4xl font-serif font-bold mb-3">
           Explora Nuestro Archivo Literario

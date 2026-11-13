@@ -7,7 +7,7 @@ export default function Catalogo() {
   const { data: libros, cargando, error, reintentar } = useFetch('/api/libros');
 
   return (
-    <section className="max-w-6xl mx-auto px-4 py-10">
+    <section className="page-container">
       <div className="mb-8">
         <h1 className="text-3xl font-serif font-bold text-color-oscuro">
           Catálogo Completo

@@ -12,7 +12,7 @@ export default function CategoriaLibros() {
   const categoriaActual = categorias?.find((cat) => cat.id === id);
 
   return (
-    <section className="max-w-6xl mx-auto px-4 py-10">
+    <section className="page-container">
       <div className="mb-8">
         <Link
           to="/"
