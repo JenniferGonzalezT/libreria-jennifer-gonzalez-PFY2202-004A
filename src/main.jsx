@@ -12,10 +12,15 @@ enableMocking().then(() => {
 });
 
 async function enableMocking() {
-  // MSW solo se activará en entorno de desarrollo local
+  /*
+  // En un entorno productivo real con backend propio, MSW se restringe solo a desarrollo:
   if (!import.meta.env.DEV) {
     return;
   }
+  // Se mantiene comentado para que el build estático desplegado en GitHub Pages
+  // (modo producción) active el Service Worker y simule las respuestas de la API REST.
+  */
+
   const { worker } = await import('./mocks/browser');
   
   return worker.start({ 
