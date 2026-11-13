@@ -2,31 +2,33 @@
 
 ## 📎 Descripción
 
-Aplicación web SPA (Single Page Application) desarrollada con React y Vite para la Semana 4 de la asignatura **Desarrollo Frontend II (PFY2202)**. Permite explorar categorías literarias y consultar el catálogo de libros consumiendo una API REST simulada mediante **Mock Service Worker (MSW)**, incorporando control de estados de carga, manejo de errores con recuperación y caché en memoria.
+Aplicación web SPA (Single Page Application) desarrollada con React y Vite para la Semana 4 de la asignatura **Desarrollo Frontend II (PFY2202)**. Permite explorar categorías literarias y consultar el catálogo de libros consumiendo una API REST simulada mediante **Mock Service Worker (MSW)**, incorporando control de estados de carga, manejo de errores con recuperación, caché en memoria y accesibilidad web.
 
 
 ## 🚀 Características Principales
 
-* **Mock REST API con MSW:** Intercepción de peticiones HTTP (`GET /api/categorias`, `GET /api/libros?categoria=:id` y simulación de errores 500) con latencia controlada.
+- **Mock REST API con MSW:** Intercepción de peticiones HTTP (`GET /api/categorias`, `GET /api/libros?categoria=:id` y simulación de errores 500) con latencia controlada.
 
-* **Custom Hook `useFetch` Optimizado:** Gestión centralizada de estados (`data`, `cargando`, `error`), cancelación de peticiones al desmontar componentes mediante `AbortController`, reintentos manuales y **caché en memoria** para evitar consultas duplicadas.
+- **Custom Hook `useFetch` Optimizado:** Gestión centralizada de estados (`data`, `cargando`, `error`), cancelación de peticiones al desmontar componentes mediante `AbortController`, reintentos manuales y **caché en memoria** para evitar consultas duplicadas.
 
-* **Enrutamiento Dinámico y Lazy Loading:** Navegación sin recargas con **React Router** (`BrowserRouter`, `NavLink`, `useParams`), rutas parametrizadas (`/categoria/:id`), carga diferida con `React.lazy` + `Suspense` y manejo de rutas inexistentes (`404`).
+- **Enrutamiento Dinámico y Lazy Loading:** Navegación sin recargas con **React Router** (`BrowserRouter`, `NavLink`, `useParams`), rutas parametrizadas (`/categoria/:id`), carga diferida con `React.lazy` + `Suspense` y manejo de rutas inexistentes (`404`).
 
-* **Diseño Responsivo con Tailwind CSS:** Paleta personalizada de estética *Dark Academia* (`color-primario`, `color-secundario`, `color-claro`, `color-oscuro`) y clases utilitarias reutilizables con `@apply`.
+- **Arquitectura Modular y Accesible:** Componentes reutilizables desacoplados (tarjetas y grillas con manejo de estados vacíos), HTML semántico y atributos ARIA (`role="status"`, `role="alert"`, `aria-hidden`) para tecnologías de asistencia.
+
+- **Diseño Responsivo con Tailwind CSS:** Paleta personalizada de estética *Dark Academia* (`color-primario`, `color-secundario`, `color-claro`, `color-oscuro`) y clases utilitarias reutilizables con `@apply`.
 
 
 ## 🛠️ Tecnologías Utilizadas
 
-* **Core:** React 19 (Hooks: `useState`, `useEffect`, `useParams`)
+- **Core:** React 19 (Hooks: `useState`, `useEffect`, `useParams`)
 
-* **Build Tool:** Vite
+- **Build Tool:** Vite
 
-* **Enrutamiento:** React Router
+- **Enrutamiento:** React Router
 
-* **Mock API:** Mock Service Worker (`msw`)
+- **Mock API:** Mock Service Worker (`msw`)
 
-* **Estilos:** Tailwind CSS v3
+- **Estilos:** Tailwind CSS v3
 
 
 ## 📂 Estructura del Proyecto
@@ -36,11 +38,14 @@ libreria-jennifer-gonzalez-PFY2202-004A/
 │   └── mockServiceWorker.js      # Worker generado por MSW para interceptar red
 ├── src/
 │   ├── components/
+│   │   ├── CategoriaCard.jsx     # Tarjeta reutilizable de categoría literaria
+│   │   ├── CategoriaGrid.jsx     # Grilla responsiva de categorías con estado vacío
 │   │   ├── Footer.jsx            # Pie de página institucional
 │   │   ├── LibroCard.jsx         # Tarjeta reutilizable de libro con formato CLP
-│   │   ├── MensajeError.jsx      # Alerta de error con botón de reintento y fallback
+│   │   ├── LibroGrid.jsx         # Grilla responsiva de libros con estado vacío
+│   │   ├── MensajeError.jsx      # Alerta accesible (role="alert") con reintento
 │   │   ├── Navbar.jsx            # Barra de navegación con estados activos (NavLink)
-│   │   └── Spinner.jsx           # Indicador visual de carga asíncrona
+│   │   └── Spinner.jsx           # Indicador accesible de carga asíncrona
 │   ├── hooks/
 │   │   └── useFetch.js           # Hook de fetching con caché y AbortController
 │   ├── mocks/
@@ -55,7 +60,7 @@ libreria-jennifer-gonzalez-PFY2202-004A/
 │   │   └── routes.config.jsx     # Configuración centralizada de rutas con Lazy Loading
 │   ├── App.jsx                   # Contenedor principal, Router y Suspense
 │   ├── index.css                 # Directivas de Tailwind CSS y clases @apply
-│   └── main.jsx                  # Punto de entrada e inicialización condicional de MSW
+│   └── main.jsx                  # Punto de entrada e inicialización de MSW
 ├── eslint.config.js
 ├── index.html
 ├── package-lock.json
