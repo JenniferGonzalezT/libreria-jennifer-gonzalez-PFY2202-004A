@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { Link } from 'react-router';
 import { useFetch } from '../hooks/useFetch';
 import Spinner from '../components/Spinner';
 import MensajeError from '../components/MensajeError';
+import CategoriaGrid from '../components/CategoriaGrid';
 
 export default function Home() {
   const [simularFallo, setSimularFallo] = useState(false);
@@ -48,25 +48,7 @@ export default function Home() {
       )}
 
       {!cargando && !error && categorias && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {categorias.map((cat) => (
-            <Link
-              key={cat.id}
-              to={`/categoria/${cat.id}`}
-              className="card-libro flex flex-col justify-between border-t-4 border-t-color-primario hover:border-t-color-secundario hover:-translate-y-1"
-            >
-              <div>
-                <h3 className="text-xl font-serif font-bold text-color-oscuro mb-2">
-                  {cat.nombre}
-                </h3>
-                <p className="text-sm text-gray-600 mb-6">{cat.descripcion}</p>
-              </div>
-              <span className="text-sm font-semibold text-color-secundario flex items-center gap-1">
-                Explorar libros →
-              </span>
-            </Link>
-          ))}
-        </div>
+        <CategoriaGrid categorias={categorias} />
       )}
     </section>
   );
