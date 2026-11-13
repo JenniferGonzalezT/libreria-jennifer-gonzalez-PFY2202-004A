@@ -1,7 +1,7 @@
 import { useFetch } from '../hooks/useFetch';
 import Spinner from '../components/Spinner';
 import MensajeError from '../components/MensajeError';
-import LibroCard from '../components/LibroCard';
+import LibroGrid from '../components/LibroGrid';
 
 export default function Catalogo() {
   const { data: libros, cargando, error, reintentar } = useFetch('/api/libros');
@@ -23,13 +23,9 @@ export default function Catalogo() {
         <MensajeError mensaje={error} onReintentar={reintentar} />
       )}
 
-      {!cargando && !error && libros && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {libros.map((libro) => (
-            <LibroCard key={libro.id} libro={libro} />
-          ))}
-        </div>
-      )}
+      {!cargando && !error && libros && 
+        <LibroGrid libros={libros} />
+      }
     </section>
   );
 }

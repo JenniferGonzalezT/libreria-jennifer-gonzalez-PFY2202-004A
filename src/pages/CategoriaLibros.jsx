@@ -2,7 +2,7 @@ import { useParams, Link } from 'react-router';
 import { useFetch } from '../hooks/useFetch';
 import Spinner from '../components/Spinner';
 import MensajeError from '../components/MensajeError';
-import LibroCard from '../components/LibroCard';
+import LibroGrid from '../components/LibroGrid';
 
 export default function CategoriaLibros() {
   const { id } = useParams();
@@ -34,26 +34,11 @@ export default function CategoriaLibros() {
         <MensajeError mensaje={error} onReintentar={reintentar} />
       )}
 
-      {!cargando && !error && libros && libros.length === 0 && (
-        <div className="bg-white rounded-xl p-8 text-center shadow-sm border border-gray-100">
-          <h3 className="text-xl font-bold text-color-oscuro mb-2">
-            No encontramos libros en esta categoría
-          </h3>
-          <p className="text-gray-600 mb-6">
-            Es posible que la categoría no exista o que aún no tenga ejemplares registrados.
-          </p>
-          <Link to="/" className="btn-primario inline-block">
-            Explorar categorías disponibles
-          </Link>
-        </div>
-      )}
-
-      {!cargando && !error && libros && libros.length > 0 && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {libros.map((libro) => (
-            <LibroCard key={libro.id} libro={libro} />
-          ))}
-        </div>
+      {!cargando && !error && libros && (
+        <LibroGrid
+          libros={libros}
+          mensajeVacio="No encontramos libros en esta categoría. Es posible que no exista o aún no tenga ejemplares registrados."
+        />
       )}
     </section>
   );
