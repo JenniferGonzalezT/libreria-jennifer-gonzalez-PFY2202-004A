@@ -7,9 +7,9 @@ Aplicación web SPA (Single Page Application) desarrollada con React y Vite para
 
 ## 🚀 Características Principales
 
-- **Mock REST API con MSW:** Intercepción de peticiones HTTP (`GET /api/categorias`, `GET /api/libros?categoria=:id` y simulación de errores 500) con latencia controlada.
+- **Mock REST API con MSW:** Intercepción de peticiones HTTP (`GET /api/categorias`, `GET /api/libros?categoria=:id` con validación `404` para categorías inexistentes y simulación de errores `500`) con latencia controlada.
 
-- **Custom Hook `useFetch` Optimizado:** Gestión centralizada de estados (`data`, `cargando`, `error`), cancelación de peticiones al desmontar componentes mediante `AbortController`, reintentos manuales y **caché en memoria** para evitar consultas duplicadas.
+- **Custom Hook `useFetch` Optimizado:** Gestión centralizada de estados (`data`, `cargando`, `error`), manejo diferenciado de códigos HTTP (`404`, `500`), cancelación de peticiones mediante `AbortController`, reintentos manuales y **caché en memoria** para evitar consultas duplicadas.
 
 - **Enrutamiento Dinámico y Lazy Loading:** Navegación sin recargas con **React Router** (`BrowserRouter`, `NavLink`, `useParams`), rutas parametrizadas (`/categoria/:id`), carga diferida con `React.lazy` + `Suspense` y manejo de rutas inexistentes (`404`).
 
