@@ -22,7 +22,16 @@ export const handlers = [
       return HttpResponse.json(db.libros); // Si no hay filtro, retorna todos
     }
 
-    const librosFiltrados = db.libros.filter(libro => libro.categoriaId === categoriaId);
+    // Verificar si la categoría existe en la base de datos
+    const categoriaExiste = db.categorias.some((cat) => cat.id === categoriaId);
+    if (!categoriaExiste) {
+      return new HttpResponse(null, {
+        status: 404,
+        statusText: 'Categoría no encontrada',
+      });
+    }
+
+    const librosFiltrados = db.libros.filter((libro) => libro.categoriaId === categoriaId);
     return HttpResponse.json(librosFiltrados);
   }),
 
@@ -32,7 +41,7 @@ export const handlers = [
     await delay(1000);
     return new HttpResponse(null, {
       status: 500,
-      statusText: 'Internal Server Error',
+      statusText: 'Error interno del servidor',
     });
   }),
 ];

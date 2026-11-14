@@ -31,7 +31,15 @@ export function useFetch(url) {
 
     fetch(url, { signal: controlador.signal })
       .then((res) => {
-        if (!res.ok) throw new Error('Error al conectar con el servidor');
+        if (!res.ok) {
+          if (res.status === 404) {
+            throw new Error('No encontramos el recurso o la categoría solicitada (Error 404).');
+          }
+          if (res.status === 500) {
+            throw new Error('El servidor de la librería está experimentando fallas internas (Error 500).');
+          }
+          throw new Error(`Error inesperado al conectar con el servidor (Código ${res.status}).`);
+        }
         return res.json();
       })
       .then((json) => {
